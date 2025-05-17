@@ -16,7 +16,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.anonymous.timenoir"
     },
     "web": {
       "bundler": "metro",
@@ -34,29 +35,19 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-font",
+      [
+        "expo-font",
         {
-          "fonts": ["./path/to/file.ttf"],
-          "android": {
-            "fonts": [
-              {
-                "fontFamily": "Source Serif 4",
-                "fontDefinitions": [
-                  {
-                    "path": "./path/to/SourceSerif4-ExtraBold.ttf",
-                    "weight": 800
-                  }
-                ]
-              }
-            ]
-        } 
-      }
+          "fonts": [
+            "./assets/fonts/Montserrat-Bold.ttf",
+            "./assets/fonts/NotoSans-Bold.ttf",
+            "./assets/fonts/NotoSans-Regular.ttf"
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
     }
-
-    
-
   }
 }
