@@ -33,10 +33,30 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+        {
+          "fonts": ["./path/to/file.ttf"],
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Source Serif 4",
+                "fontDefinitions": [
+                  {
+                    "path": "./path/to/SourceSerif4-ExtraBold.ttf",
+                    "weight": 800
+                  }
+                ]
+              }
+            ]
+        } 
+      }
     ],
     "experiments": {
       "typedRoutes": true
     }
+
+    
+
   }
 }
