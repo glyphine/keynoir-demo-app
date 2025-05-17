@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat Bold"],
-        noto: ["NotoSans Regular"],
-        "noto-bold": ["NotoSans Bold"],
+        "montserrat-bold": ["Montserrat-Bold"],
+        "notosans-regular": ["NotoSans-Regular"],
+        "notosans-bold": ["NotoSans-Bold"],
       },
     },
   },
