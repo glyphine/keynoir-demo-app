@@ -44,7 +44,16 @@
             "./assets/fonts/NotoSans-Regular.ttf"
           ]
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow timenoir to access your camera",
+          "microphonePermission": "Allow timenoir to access your microphone",
+          "recordAudioAndroid": true
+        }
       ]
+      
     ],
     "experiments": {
       "typedRoutes": true

@@ -7,4 +7,4 @@ export const COLORS = {
   primary: "FF82A9",
   secondary: "7F95D1",
   lightpink: "FFC0BE",
-};
+} as const;
