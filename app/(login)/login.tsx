@@ -41,11 +41,11 @@ export default function LoginPage() {
         </View>
 
         {/* Bottom link text */}
-        <Text className="text-black font-notosans-regular">
+        <Text className="text-black text-base font-notosans-regular">
           Don&apos;t have an account?{" "}
           <Text
             className="text-pink-600 font-notosans-bold"
-            onPress={() => router.push("/register")}
+            onPress={() => router.push("/phone")}
           >
             Create one
           </Text>
