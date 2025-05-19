@@ -1,7 +1,21 @@
 import { router } from "expo-router";
+import { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function PasswordPage() {
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleLogin = () => {
+    if (mobile === "09123456789" && password === "admin1.") {
+      setError(false);
+      router.push("/(client)/home");
+    } else {
+      setError(true);
+    }
+  };
+
   return (
     <View className="flex-1 bg-black justify-center px-6">
       {/* Logo */}
@@ -26,7 +40,12 @@ export default function PasswordPage() {
         <TextInput
           placeholder="Mobile No."
           placeholderTextColor="#999"
-          className="border border-gray-300 bg-white text-black font-notosans-regular rounded-md px-4 py-3 mb-8"
+          keyboardType="number-pad"
+          value={mobile}
+          onChangeText={setMobile}
+          className={`border ${
+            error ? "border-red-500" : "border-gray-300"
+          } bg-white text-black font-notosans-regular rounded-md px-4 py-3 mb-4`}
         />
 
         {/* Password */}
@@ -34,18 +53,34 @@ export default function PasswordPage() {
           placeholder="Password"
           placeholderTextColor="#999"
           secureTextEntry
-          className="border border-gray-300 bg-white text-black font-notosans-regular rounded-md px-4 py-3 mb-2"
+          value={password}
+          onChangeText={setPassword}
+          className={`border ${
+            error ? "border-red-500" : "border-gray-300"
+          } bg-white text-black font-notosans-regular rounded-md px-4 py-3 mb-2`}
         />
 
         {/* Forgot password */}
         <TouchableOpacity className="items-end">
-          <Text className="text-xs font-notosans-bold text-black mb-8">Forgot password?</Text>
+          <Text className="text-xs font-notosans-bold text-black mb-4">
+            Forgot password?
+          </Text>
         </TouchableOpacity>
+
+        {/* Error Message */}
+        {error && (
+          <Text className="text-red-500 text-sm font-notosans-regular text-center mb-2">
+            Invalid mobile number or password.
+          </Text>
+        )}
 
         {/* Login Button */}
         <TouchableOpacity
-          onPress={() => router.push("/(client)/home")}
-          className="bg-black py-4 rounded-xl items-center mb-8"
+          onPress={handleLogin}
+          disabled={!mobile || !password}
+          className={`py-4 rounded-xl items-center mb-8 mt-4 ${
+            !mobile || !password ? "bg-black opacity-50" : "bg-black "
+          }`}
         >
           <Text className="text-white text-lg font-montserrat-bold">LOGIN</Text>
         </TouchableOpacity>
