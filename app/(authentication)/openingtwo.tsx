@@ -1,4 +1,4 @@
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
@@ -6,17 +6,17 @@ export default function OpeningTwoPage() {
   return (
     <View className="flex-1 bg-black justify-center items-center relative">
       {/* Branding top-right */}
-      <Text className="absolute top-12 right-6 text-secondary font-montserrat-bold text-xl">
+      <Text className="absolute top-14 right-6 text-secondary font-montserrat-bold text-xl">
         timenoir.
       </Text>
 
       {/* Smaller curved panel */}
-      <View className="w-full h-[80%] inset-shadow bg-backgroundtwo rounded-tr-[200px] rounded-bl-[200px] px-12 py-10 ">
+      <View className="w-full h-[80%] inset-shadow bg-backgroundtwo rounded-tr-[200px] rounded-bl-[200px] px-16 py-10 ">
         {/* Pink line */}
         <View className="w-12 h-2 rounded-3xl bg-primary mb-6 mt-6" />
 
         {/* Headline */}
-        <Text className="text-4xl font-montserrat-bold text-black leading-snug mb-32">
+        <Text className="text-4xl font-montserrat-bold text-black leading-snug mb-40">
           how{"\n"}would you{"\n"}like to{"\n"}proceed?
         </Text>
 
@@ -47,10 +47,8 @@ export default function OpeningTwoPage() {
         className="absolute bottom-0 left-0 w-28 h-28 bg-secondary rounded-tr-full"
       >
         <View className="flex-1 items-center justify-center">
-          <MaterialIcons name="arrow-back" size={20} color="white" />
-          <Text className="text-white text-xs mt-1 font-montserrat-bold">
-            BACK
-          </Text>
+          <Ionicons name="chevron-back" size={28} color="white" />
+      
         </View>
       </Pressable>
     </View>
