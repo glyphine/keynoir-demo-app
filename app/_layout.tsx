@@ -16,6 +16,11 @@ export default function RootLayout() {
       <Stack.Screen name="(login)/login" options={{ headerShown: false }} />
       <Stack.Screen name="(login)/biometric" options={{ headerShown: false }} />
       <Stack.Screen name="(login)/password" options={{ headerShown: false }} />
+      <Stack.Screen name="(register)/phone" options={{ headerShown: false }} />
+      <Stack.Screen name="(register)/otp" options={{ headerShown: false }} />
+      <Stack.Screen name="(register)/register" options={{ headerShown: false }} />
+      <Stack.Screen name="(register)/permission" options={{ headerShown: false }} />
+      <Stack.Screen name="(register)/suggestion" options={{ headerShown: false }} />
       <Stack.Screen name="(client)" options={{ headerShown: false }} />
       <Stack.Screen name="components" options={{ headerShown: false, animation: "none" }}/>
     </Stack>
