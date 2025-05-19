@@ -26,7 +26,7 @@ export default function PermissionPage() {
 
       {/* Continue Button */}
       <TouchableOpacity
-        onPress={() => router.push("/face-setup")}
+        onPress={() => router.push("/(client)/home")}
         className="bg-primary py-4 rounded-2xl items-center mb-32"
       >
         <Text className="text-black font-montserrat-bold text-base">
