@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 
 export default function OpeningTwoPage() {
   return (
@@ -21,24 +21,24 @@ export default function OpeningTwoPage() {
         </Text>
 
         {/* Open account button */}
-        <Pressable
+        <TouchableOpacity
           onPress={() => router.push("/(register)/phone")}
           className="bg-black rounded-xl py-4 items-center mb-4"
         >
           <Text className="text-white text-lg font-montserrat-bold">
             OPEN AN ACCOUNT
           </Text>
-        </Pressable>
+        </TouchableOpacity>
 
         {/* Login button */}
-        <Pressable
+        <TouchableOpacity
           onPress={() => router.push("/(login)/login")}
           className="border border-black rounded-xl py-4 items-center"
         >
           <Text className="text-black text-lg font-montserrat-bold">
             login
           </Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
 
       {/* Back button (bottom left) */}

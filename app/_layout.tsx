@@ -17,7 +17,6 @@ export default function RootLayout() {
       <Stack.Screen name="(login)/biometric" options={{ headerShown: false }} />
       <Stack.Screen name="(login)/password" options={{ headerShown: false }} />
       <Stack.Screen name="(client)" options={{ headerShown: false }} />
-      <Stack.Screen name="(authentication)" options={{ headerShown: false, animation: "none" }}/>
       <Stack.Screen name="components" options={{ headerShown: false, animation: "none" }}/>
     </Stack>
   );

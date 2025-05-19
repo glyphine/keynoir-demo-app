@@ -1,7 +1,7 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function LoginPage() {
   return (
@@ -19,7 +19,7 @@ export default function LoginPage() {
       <View className=" justify-center items-center w-full h-[50%] inset-shadow bg-backgroundtwo rounded-tl-[200px] rounded-br-[200px] px-12 py-10 ">
         {/* Two buttons side-by-side */}
         <View className="flex-row mb-6 space-x-4">
-          <Pressable
+          <TouchableOpacity
             onPress={() => router.push("/biometric")}
             className="bg-primary p- w-40 h-40 justify-center items-center shadow rounded-t-3xl rounded-bl-3xl"
           >
@@ -27,9 +27,9 @@ export default function LoginPage() {
             <Text className="text-black text-center mt-2 font-notosans-regular">
               Biometrics {"\n"} Login
             </Text>
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable
+          <TouchableOpacity
             onPress={() => router.push("/password")}
             className="bg-secondary p-6 w-40 h-40 justify-center items-center shadow rounded-b-3xl rounded-tr-3xl mt-6"
           >
@@ -37,7 +37,7 @@ export default function LoginPage() {
             <Text className="text-black text-center mt-3 font-montserrat-regular">
               Password {"\n"}Login
             </Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
 
         {/* Bottom link text */}
