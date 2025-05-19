@@ -102,7 +102,7 @@ export default function RegisterPage() {
         <TouchableOpacity
           disabled={!isFormValid}
           onPress={() => router.push("/suggestion")}
-          className={`py-4 rounded-xl items-center mb-8 ${
+          className={`py-4 rounded-xl items-center mb-8 mt-4 ${
             isFormValid ? "bg-black" : "bg-black opacity-50"
           }`}
         >
