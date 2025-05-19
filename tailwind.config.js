@@ -7,6 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+       colors: {
+       background: "#000000",
+       backgroundtwo: "#FFEBE7",
+       primary: "#FF82A9",
+       secondary: "#7F95D1",
+       lightpink: "#FFC0BE",
+      },
+      
       fontFamily: {
         "montserrat-bold": ["Montserrat-Bold"],
         "notosans-regular": ["NotoSans-Regular"],

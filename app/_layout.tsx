@@ -1,6 +1,6 @@
 import "@/app/global.css";
 import { useFonts } from "expo-font";
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
 
 export default function RootLayout() {
   useFonts({
@@ -10,6 +10,11 @@ export default function RootLayout() {
   });
 
   return (
-    <Stack/>
+    <Stack initialRouteName="(authentication)/opening">
+      <Stack.Screen name="(authentication)/opening" options={{ headerShown: false }} />
+      <Stack.Screen name="(client)" options={{ headerShown: false }} />
+      <Stack.Screen name="(authentication)" options={{ headerShown: false, animation: "none" }}/>
+      <Stack.Screen name="components" options={{ headerShown: false, animation: "none" }}/>
+    </Stack>
   );
 }
