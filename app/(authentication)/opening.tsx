@@ -3,7 +3,7 @@ import { Image, Text, View } from "react-native";
 
 export default function OpeningPage() {
   return (
-    <View className="flex-1 justify-between bg-background px-14 py-12">
+    <View className="flex-1 justify-between bg-background px-12 py-12">
       {/* Centered Logo + Text */}
       <View className="items-center justify-center flex-1">
         <Image

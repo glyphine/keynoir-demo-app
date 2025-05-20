@@ -21,6 +21,8 @@ export default function RootLayout() {
       <Stack.Screen name="(register)/register" options={{ headerShown: false }} />
       <Stack.Screen name="(register)/permission" options={{ headerShown: false }} />
       <Stack.Screen name="(register)/suggestion" options={{ headerShown: false }} />
+      <Stack.Screen name="(client)/home" options={{ headerShown: false }} />
+      <Stack.Screen name="(client)/[id]" options={{ headerShown: false }} />
       <Stack.Screen name="(client)" options={{ headerShown: false }} />
       <Stack.Screen name="components" options={{ headerShown: false, animation: "none" }}/>
     </Stack>
