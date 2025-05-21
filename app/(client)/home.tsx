@@ -112,7 +112,10 @@ export default function TimeCapsuleScreen() {
         ))}
 
         {/* Add Button */}
-        <TouchableOpacity className="items-center">
+        <TouchableOpacity
+          className="items-center"
+          onPress={() => router.push("/logoselection")}
+        >
           <View className="w-36 h-36 bg-primary rounded-full justify-center items-center">
             <Text className="text-white text-6xl font-notosans-bold">+</Text>
           </View>
@@ -167,11 +170,7 @@ function PopBubble({ item }: any) {
             height: bubbleSize,
           }}
         >
-          <Image
-            source={item.image}
-            className="w-16 h-16"
-            resizeMode="cover"
-          />
+          <Image source={item.image} className="w-16 h-16" resizeMode="cover" />
         </View>
 
         {/* Title & Date */}
