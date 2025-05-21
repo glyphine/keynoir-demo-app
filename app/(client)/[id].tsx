@@ -1,11 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
+import dayjs from "dayjs";
 import { router, useLocalSearchParams } from "expo-router";
-import {
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { useEffect, useState } from "react";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -15,7 +12,22 @@ import Animated, {
 
 export default function CapsuleLockedScreen() {
   const { title, date } = useLocalSearchParams();
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
+  const today = new Date().toISOString().split("T")[0];
+  const isUnlockedd = date <= today;
+
+  const topOffset = useSharedValue(0);
+  const bottomOffset = useSharedValue(0);
+
   const shake = useSharedValue(0);
+
+  useEffect(() => {
+    const today = dayjs().format("YYYY-MM-DD");
+    if (today === date) {
+      setIsUnlocked(true);
+    }
+  }, [date]);
 
   const triggerShake = () => {
     shake.value = withSequence(
@@ -27,7 +39,26 @@ export default function CapsuleLockedScreen() {
     );
   };
 
-  const animatedStyle = useAnimatedStyle(() => ({
+  const triggerOpen = () => {
+    setHasOpened(true);
+    topOffset.value = withTiming(-100, { duration: 600 });
+    bottomOffset.value = withTiming(100, { duration: 600 });
+
+    // Delay 3 seconds then navigate
+    setTimeout(() => {
+      router.push("/(client)/(add)/noteview");
+    }, 500);
+  };
+
+  const topStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: topOffset.value }],
+  }));
+
+  const bottomStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: bottomOffset.value }],
+  }));
+
+  const capsuleShakeStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: shake.value }],
   }));
 
@@ -39,10 +70,12 @@ export default function CapsuleLockedScreen() {
           <Ionicons name="arrow-back" size={24} color="white" />
         </TouchableOpacity>
       </View>
+
+      {/* Info */}
       <View className="w-full flex-row items-start mb-6">
-        <View className="flex-1 items-start ">
+        <View className="flex-1 items-start">
           <Text className="text-white text-3xl font-montserrat-bold mb-1">
-            capsule is locked.
+            {isUnlocked ? "capsule is ready." : "capsule is locked."}
           </Text>
           <Text className="text-white text-base mt-1 font-notosans-regular">
             Time-locked until <Text className="font-notosans-bold">{date}</Text>
@@ -50,40 +83,62 @@ export default function CapsuleLockedScreen() {
         </View>
       </View>
 
-      {/* Capsule Visual */}
-      <TouchableWithoutFeedback onPress={triggerShake}>
-        <Animated.View
-          style={[animatedStyle]}
-          className="items-center justify-center flex-1"
-        >
-          {/* Capsule */}
-          <View className="w-40 h-96 rounded-full overflow-hidden flex-col items-center justify-between">
-            <View className="flex-1 w-full bg-indigo-300" />
+      {/* Capsule */}
+      <Pressable
+        onPress={isUnlocked && !hasOpened ? triggerOpen : triggerShake}
+        className="flex-1 items-center justify-center"
+      >
+        <Animated.View style={[capsuleShakeStyle]}>
+          <View className="w-40 h-96 rounded-full overflow-hidden items-center justify-between">
+            <Animated.View
+              style={[topStyle]}
+              className="w-full h-1/2 bg-indigo-300 rounded-t-full"
+            />
             <View className="h-2 w-full bg-black" />
-            <View className="flex-1 w-full bg-pink-400" />
+            <Animated.View
+              style={[bottomStyle]}
+              className="w-full h-1/2 bg-pink-400 rounded-b-full"
+            />
           </View>
 
           {/* Lock Icon */}
-          <View className="absolute w-16 h-16 bg-black rounded-full items-center justify-center">
-            <Ionicons name="lock-closed-outline" size={28} color="white" />
-          </View>
+
+          {!hasOpened && (
+            <View
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "25%",
+                transform: [{ translateX: -32 }, { translateY: -32 }],
+              }}
+              className="w-16 h-16 bg-black rounded-full items-center justify-center"
+            >
+              <Ionicons
+                name={isUnlocked ? "lock-open-outline" : "lock-closed-outline"}
+                size={28}
+                color="white"
+              />
+            </View>
+          )}
         </Animated.View>
-      </TouchableWithoutFeedback>
+      </Pressable>
 
       {/* Title */}
       <Text className="text-primary text-2xl font-montserrat-bold mb-12">
         {title}
       </Text>
 
-      {/* Delete Button */}
-      <TouchableOpacity
-        onPress={() => console.log("delete pressed")}
-        className="w-full bg-white py-4 rounded-2xl items-center mb-10"
-      >
-        <Text className="text-black font-montserrat-bold text-base">
-          DELETE
-        </Text>
-      </TouchableOpacity>
+      {/* Delete Button (only when locked) */}
+      {!isUnlocked && (
+        <TouchableOpacity
+          onPress={() => console.log("delete pressed")}
+          className="w-full bg-white py-4 rounded-2xl items-center mb-10"
+        >
+          <Text className="text-black font-montserrat-bold text-lg">
+            DELETE
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

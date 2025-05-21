@@ -1,6 +1,7 @@
+import CapsuleReadyPopup from "@/components/capsuleready";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useRouter } from "expo-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Dimensions,
   Image,
@@ -16,14 +17,62 @@ import Animated, {
 } from "react-native-reanimated";
 import { capsuleData } from "./capsuleData";
 
-
-
 const { width } = Dimensions.get("window");
 
+type Capsule = {
+  id: number;
+  title: string;
+  letter: string;
+  dateInputted: string;
+  dateToBeOpened: string;
+  image: any;
+};
+
 export default function TimeCapsuleScreen() {
-  
+  const [showPopup, setShowPopup] = useState(false);
+  const [readyCapsule, setReadyCapsule] = useState<Capsule | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0]; // format YYYY-MM-DD
+
+    const matched = capsuleData.find(
+      (capsule) => capsule.dateToBeOpened === today
+    );
+
+    if (matched) {
+      setReadyCapsule(matched);
+      setShowPopup(true);
+    }
+  }, []);
+
+  const handleOpen = () => {
+    if (readyCapsule) {
+      router.push({
+        pathname: "/(client)/[id]",
+        params: {
+          id: readyCapsule.id,
+          title: readyCapsule.title,
+          date: readyCapsule.dateToBeOpened,
+        },
+      });
+    }
+    setShowPopup(false);
+  };
+
+  const handleSkip = () => setShowPopup(false);
+
   return (
     <View className="flex-1 bg-black pt-12">
+      {/* ✅ Popup */}
+      {showPopup && readyCapsule && (
+        <CapsuleReadyPopup
+          capsule={readyCapsule}
+          onOpen={handleOpen}
+          onSkip={handleSkip}
+        />
+      )}
+
       {/* Header */}
       <View className="flex-row justify-between items-center px-6 mb-4 mt-4">
         <Text className="text-white text-3xl font-montserrat-bold">
@@ -35,9 +84,9 @@ export default function TimeCapsuleScreen() {
       </View>
 
       {/* Info Bar */}
-      <View className="flex-row w-full h-9  overflow-hidden ">
+      <View className="flex-row w-full h-9 overflow-hidden">
         <View className="flex-1 bg-primary justify-center pl-4">
-          <Text className="text-black text-base  font-notosans-regular">
+          <Text className="text-black text-base font-notosans-regular">
             active capsules: <Text className="font-notosans-bold">4</Text>
           </Text>
         </View>
