@@ -44,7 +44,7 @@ export default function LogoSelectionScreen() {
       {/* Selected Icon Display */}
       {selected !== null && (
         <View className="self-center mb-6 relative">
-          <View className="w-52 h-52 rounded-full bg-pink-100 items-center justify-center">
+          <View className="w-52 h-52 rounded-full bg-pink-100 items-center justify-center border-4 border-primary">
             <Image
               source={icons[selected]}
               className="w-44 h-44"
