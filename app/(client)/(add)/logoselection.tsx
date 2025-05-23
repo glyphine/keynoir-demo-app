@@ -26,12 +26,14 @@ export default function LogoSelectionScreen() {
     setError(false);
     router.push({
       pathname: "/(client)/(add)/newcap",
-      params: { icon: selected }, // Optional: pass selected index if needed
+      params: {
+        icon: selected.toString(), 
+      },
     });
   };
 
   return (
-    <View className="flex-1 bg-black px-6 pt-12">
+    <View className="flex-1 bg-black px-8 pt-12">
       {/* Header */}
       <TouchableOpacity onPress={() => router.back()} className="mb-4">
         <Ionicons name="arrow-back" size={24} color="white" />
@@ -72,7 +74,11 @@ export default function LogoSelectionScreen() {
                   isSelected ? "border-4 border-green-400" : ""
                 }`}
               >
-                <Image source={icon} className="w-20 h-20" resizeMode="contain" />
+                <Image
+                  source={icon}
+                  className="w-20 h-20"
+                  resizeMode="contain"
+                />
                 {isSelected && (
                   <View className="absolute bottom-0 right-0 bg-green-400 rounded-full p-1">
                     <Ionicons name="checkmark" size={12} color="white" />
