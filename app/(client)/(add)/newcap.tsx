@@ -49,12 +49,12 @@ export default function NewCapsulePage() {
           <TouchableOpacity onPress={() => router.back()} className="mb-4">
             <Ionicons name="arrow-back" size={24} color="white" />
           </TouchableOpacity>
-          <Text className="text-white text-4xl font-montserrat-bold leading-tight mb-10">
+          <Text className="text-white text-3xl font-montserrat-bold leading-tight mb-10">
             new time{"\n"}capsule.
           </Text>
           {/* Icon Preview */}
           <View className="items-center mb-8">
-            <View className="w-48 h-48 bg-backgroundtwo rounded-full items-center justify-center">
+            <View className="w-52 h-52 bg-backgroundtwo rounded-full items-center justify-center border-4 border-primary">
               <Image
                 source={selectedIcon}
                 className="w-44 h-44"
@@ -85,7 +85,7 @@ export default function NewCapsulePage() {
 
         {/* Bottom Note & Button */}
         <View className="mt-12 mb-10 items-center">
-          <Text className="text-white text-center text-sm font-notosans-regular mb-4">
+          <Text className="text-white text-center text-xs font-notosans-regular mb-4">
             Note: This capsule will open automatically in 1 week.
           </Text>
           <TouchableOpacity
@@ -95,7 +95,7 @@ export default function NewCapsulePage() {
               isValid ? "bg-white" : "bg-white/40"
             }`}
           >
-            <Text className="text-black font-montserrat-bold text-base">
+            <Text className="text-black font-montserrat-bold text-lg">
               CONTINUE
             </Text>
           </TouchableOpacity>

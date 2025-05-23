@@ -7,8 +7,8 @@ export const capsuleData = [
     letter:
       "Hey future self, I hope you’ve grown into someone you’re proud of. Don’t forget how far you’ve come, even when things get tough.",
     dateInputted: "2025-05-20",
-    dateToBeOpened: "2025-05-21", 
-    image: require("@/assets/images/sampleicon.jpg"),
+    dateToBeOpened: "2025-05-23", 
+    image: require("@/assets/images/cat1.png"),
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const capsuleData = [
       "By now, I hope you've graduated and made mom proud. Keep chasing your dreams no matter what hurdles come your way.",
     dateInputted: "2025-05-01",
     dateToBeOpened: "2025-12-15",
-    image: require("@/assets/images/sampleicon.jpg"),
+    image: require("@/assets/images/cat5.png"),
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export const capsuleData = [
       "Thank you for always being there. I hope we're still close and laughing at the same old jokes a year from now.",
     dateInputted: "2025-03-10",
     dateToBeOpened: "2026-03-10",
-    image: require("@/assets/images/sampleicon.jpg"),
+    image: require("@/assets/images/cat3.png"),
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ export const capsuleData = [
       "These are the dreams I’m planting today. One year later, let’s see how many have grown.",
     dateInputted: "2025-02-01",
     dateToBeOpened: "2026-02-01",
-    image: require("@/assets/images/sampleicon.jpg"),
+    image: require("@/assets/images/cat4.png"),
   },
   {
     id: 5,
@@ -44,6 +44,6 @@ export const capsuleData = [
       "You made it through some dark days. I'm proud of you for holding on. Celebrate your strength today.",
     dateInputted: "2025-04-07",
     dateToBeOpened: "2025-10-07",
-    image: require("@/assets/images/sampleicon.jpg"),
+    image: require("@/assets/images/cat5.png"),
   },
 ];

@@ -17,6 +17,7 @@ export default function LogoSelectionScreen() {
   const [error, setError] = useState(false);
   const router = useRouter();
 
+const isValid = selected !== null;
   const handleContinue = () => {
     if (selected === null) {
       setError(true);
@@ -46,7 +47,7 @@ export default function LogoSelectionScreen() {
       {/* Selected Icon Display */}
       {selected !== null && (
         <View className="self-center mb-6 relative">
-          <View className="w-52 h-52 rounded-full bg-pink-100 items-center justify-center border-4 border-primary">
+          <View className="w-52 h-52 rounded-full bg-backgroundtwo items-center justify-center border-4 border-primary">
             <Image
               source={icons[selected]}
               className="w-44 h-44"
@@ -70,7 +71,7 @@ export default function LogoSelectionScreen() {
           return (
             <TouchableOpacity key={index} onPress={() => setSelected(index)}>
               <View
-                className={`w-24 h-24 rounded-full bg-pink-100 items-center justify-center relative ${
+                className={`w-24 h-24 rounded-full bg-backgroundtwo items-center justify-center relative ${
                   isSelected ? "border-4 border-green-400" : ""
                 }`}
               >
@@ -98,19 +99,23 @@ export default function LogoSelectionScreen() {
       )}
 
       {/* Note */}
-      <Text className="text-white text-center text-xs mt-6 mb-6 font-notosans-regular">
-        Note: This capsule will open automatically in 1 week.
-      </Text>
-
-      {/* Continue Button */}
-      <TouchableOpacity
-        onPress={handleContinue}
-        className="bg-white py-4 rounded-2xl items-center mb-6"
-      >
-        <Text className="text-black font-montserrat-bold text-base">
-          CONTINUE
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <View className="mt-12 mb-10 items-center">
+          <Text className="text-white text-center text-xs font-notosans-regular mb-4">
+            Note: This capsule will open automatically in 1 week.
+          </Text>
+          <TouchableOpacity
+            disabled={!isValid}
+            onPress={handleContinue}
+            className={`w-full py-4 rounded-2xl items-center ${
+              isValid ? "bg-white" : "bg-white/40"
+            }`}
+          >
+            <Text className="text-black font-montserrat-bold text-lg">
+              CONTINUE
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+  
   );
 }
