@@ -45,7 +45,7 @@ export default function OTPPage() {
       keyboardShow.remove();
       keyboardHide.remove();
     };
-  }, []);
+  }, );
 
   const handleChange = (value: string, index: number) => {
     // Paste: handle full string paste
