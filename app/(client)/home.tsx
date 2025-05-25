@@ -106,7 +106,7 @@ export default function TimeCapsuleScreen() {
           choose a time{"\n"}capsule to view.
         </Text>
         <TouchableOpacity>
-          <MaterialIcons name="logout" size={24} color="#FF82A9" />
+          <MaterialIcons name="logout" size={24} color="#FF82A9" onPress={() => router.push("/opening")} />
         </TouchableOpacity>
       </View>
 

@@ -10,6 +10,7 @@ export default function RootLayout() {
   });
 
   return (
+    
     <Stack initialRouteName="(authentication)/opening">
       <Stack.Screen name="(authentication)/opening" options={{ headerShown: false }} />
       <Stack.Screen name="(authentication)/openingtwo" options={{ headerShown: false }} />
