@@ -14,8 +14,6 @@ export default function CapsuleLockedScreen() {
   const { title, date } = useLocalSearchParams();
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [hasOpened, setHasOpened] = useState(false);
-  const today = new Date().toISOString().split("T")[0];
-  const isUnlockedd = date <= today;
 
   const topOffset = useSharedValue(0);
   const bottomOffset = useSharedValue(0);
@@ -124,7 +122,7 @@ export default function CapsuleLockedScreen() {
       </Pressable>
 
       {/* Title */}
-      <Text className="text-primary text-2xl font-montserrat-bold mb-12">
+      <Text className="text-primary text-2xl font-montserrat-bold mb-24">
         {title}
       </Text>
 
@@ -132,7 +130,7 @@ export default function CapsuleLockedScreen() {
       {!isUnlocked && (
         <TouchableOpacity
           onPress={() => console.log("delete pressed")}
-          className="w-full bg-white py-4 rounded-2xl items-center mb-10"
+          className="w-full bg-white py-4 rounded-2xl items-center mb-14"
         >
           <Text className="text-black font-montserrat-bold text-lg">
             DELETE
