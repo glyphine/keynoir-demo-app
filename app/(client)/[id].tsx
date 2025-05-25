@@ -107,7 +107,7 @@ export default function CapsuleLockedScreen() {
                 position: "absolute",
                 top: "50%",
                 left: "25%",
-                transform: [{ translateX: -32 }, { translateY: -32 }],
+                transform: [{ translateX: -36 }, { translateY: -32 }],
               }}
               className="w-16 h-16 bg-black rounded-full items-center justify-center"
             >
@@ -130,7 +130,7 @@ export default function CapsuleLockedScreen() {
       {!isUnlocked && (
         <TouchableOpacity
           onPress={() => console.log("delete pressed")}
-          className="w-full bg-white py-4 rounded-2xl items-center mb-14"
+          className="w-full bg-white py-4 rounded-2xl items-center mb-16"
         >
           <Text className="text-black font-montserrat-bold text-lg">
             DELETE

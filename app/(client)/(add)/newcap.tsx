@@ -91,7 +91,7 @@ export default function NewCapsulePage() {
           <TouchableOpacity
             disabled={!isValid}
             onPress={handleContinue}
-            className={`w-full py-4 rounded-2xl items-center ${
+            className={`w-full py-4 rounded-2xl items-center mb-8 ${
               isValid ? "bg-white" : "bg-white/40"
             }`}
           >
