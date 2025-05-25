@@ -3,14 +3,6 @@ import { useRouter, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
-const icons = [
-  require("@/assets/images/cat1.png"),
-  require("@/assets/images/cat2.png"),
-  require("@/assets/images/cat3.png"),
-  require("@/assets/images/cat4.png"),
-  require("@/assets/images/cat5.png"),
-  require("@/assets/images/cat6.png"),
-];
 
 
 export default function CapsuleNoteScreen() {

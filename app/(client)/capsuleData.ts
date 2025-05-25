@@ -7,7 +7,7 @@ export const capsuleData = [
     letter:
       "Hey future self, I hope you’ve grown into someone you’re proud of. Don’t forget how far you’ve come, even when things get tough.",
     dateInputted: "2025-05-20",
-    dateToBeOpened: "2025-05-23", 
+    dateToBeOpened: "2025-05-25", 
     image: require("@/assets/images/cat1.png"),
   },
   {

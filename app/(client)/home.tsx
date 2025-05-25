@@ -2,22 +2,13 @@ import CapsuleReadyPopup from "@/components/capsuleready";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import {
-  Dimensions,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
 import { capsuleData } from "./capsuleData";
-
-const { width } = Dimensions.get("window");
 
 type Capsule = {
   id: number;
@@ -43,33 +34,32 @@ export default function TimeCapsuleScreen() {
   const [capsules, setCapsules] = useState(capsuleData);
   const router = useRouter();
   const params = useLocalSearchParams();
-  const { icon } = useLocalSearchParams();
 
-  const selectedIcon = icons[parseInt(icon as string, 10)];
+  useEffect(() => {
+    if (params?.capsule && capsules.length < 10) {
+      try {
+        const rawCapsule = JSON.parse(params.capsule as string);
+        const imageIndex = parseInt(rawCapsule.image, 10);
 
- useEffect(() => {
-  if (params?.capsule && capsules.length < 10) {
-    try {
-      const rawCapsule = JSON.parse(params.capsule as string);
-      const imageIndex = parseInt(rawCapsule.image, 10);
+        //  Prevent duplicates by checking unique ID or title
+        const alreadyExists = capsules.some(
+          (c) =>
+            c.title === rawCapsule.title &&
+            c.dateToBeOpened === rawCapsule.dateToBeOpened
+        );
+        if (alreadyExists) return;
 
-      // ✅ Prevent duplicates by checking unique ID or title
-      const alreadyExists = capsules.some(
-        (c) => c.title === rawCapsule.title && c.dateToBeOpened === rawCapsule.dateToBeOpened
-      );
-      if (alreadyExists) return;
+        const newCapsule: Capsule = {
+          ...rawCapsule,
+          image: icons[imageIndex],
+        };
 
-      const newCapsule: Capsule = {
-        ...rawCapsule,
-        image: icons[imageIndex],
-      };
-
-      setCapsules((prev) => [...prev, newCapsule]);
-    } catch (err) {
-      console.error("Invalid capsule format", err);
+        setCapsules((prev) => [...prev, newCapsule]);
+      } catch (err) {
+        console.error("Invalid capsule format", err);
+      }
     }
-  }
-}, [params?.capsule]);
+  }, [params?.capsule]);
 
   useEffect(() => {
     const today = new Date().toISOString().split("T")[0];
@@ -99,16 +89,9 @@ export default function TimeCapsuleScreen() {
 
   const handleSkip = () => setShowPopup(false);
 
-  const handleLock = (newCapsule: Capsule) => {
-    if (capsules.length < 10) {
-      setCapsules((prev) => [...prev, newCapsule]);
-      router.push("/(client)/home");
-    }
-  };
-
   return (
     <View className="flex-1 bg-black pt-12">
-      {/* ✅ Popup */}
+      {/* Popup */}
       {showPopup && readyCapsule && (
         <CapsuleReadyPopup
           capsule={readyCapsule}
@@ -131,7 +114,8 @@ export default function TimeCapsuleScreen() {
       <View className="flex-row w-full h-9 overflow-hidden">
         <View className="flex-1 bg-primary justify-center pl-4">
           <Text className="text-black text-base font-notosans-regular">
-            active capsules: <Text className="font-notosans-bold">{capsules.length}</Text>
+            active capsules:{" "}
+            <Text className="font-notosans-bold">{capsules.length}</Text>
           </Text>
         </View>
         <View className="flex-1 bg-secondary justify-center pr-4 items-end">
@@ -181,7 +165,7 @@ function PopBubble({ item }: any) {
 
   useEffect(() => {
     scale.value = withSpring(1, { damping: 10 });
-  }, []);
+  });
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [

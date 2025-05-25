@@ -7,7 +7,7 @@ import { capsuleData } from "../capsuleData";
 export default function CapsuleNoteViewScreen() {
   const router = useRouter();
   const { title } = useLocalSearchParams();
-    const [capsules, setCapsules] = useState(capsuleData);
+  const [capsules, setCapsules] = useState(capsuleData);
 
   const [pages, setPages] = useState([""]);
   const [currentPage, setCurrentPage] = useState(0);
