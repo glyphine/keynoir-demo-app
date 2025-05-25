@@ -43,7 +43,7 @@ export default function MobilePage() {
       keyboardShow.remove();
       keyboardHide.remove();
     };
-  }, []);
+  },);
 
   const handleNext = () => {
     if (isValidMobile) {
